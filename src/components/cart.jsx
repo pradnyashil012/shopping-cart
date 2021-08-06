@@ -61,7 +61,7 @@ export default function Cart(props) {
           </div>
           <hr />
           <div className="row">
-              <button className="button" onClick={() => {alert('Your order has been placed succesfully'); localStorage.clear(); setCartItems([])}}>
+              <button className="button" onClick={() => {alert('Your order has been placed succesfully'); localStorage.removeItem("cartItems"); setCartItems([])}}>
                   Checkout
               </button>
           </div>
