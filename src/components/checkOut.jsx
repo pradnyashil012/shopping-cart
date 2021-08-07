@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function Cart(props) {
-  const { setCartItems, onAdd, onRemove } = props;
+export default function Checkout(props) {
+  const { setCartItems } = props;
 
   const cartItems = localStorage.getItem("cartItems")?.split(";").map(JSON.parse) || [];
 
@@ -13,19 +13,12 @@ export default function Cart(props) {
 
   return (
     <aside className="block col-1">
-      <h2 align={"center"} style={{fontSize: 30, fontWeight: 'bold'}}>Cart Items</h2>
+      <h2 align={"center"} style={{fontSize: 30, fontWeight: 'bold'}}>Your Order Summary</h2><hr />
       <div>{cartItems.length === 0 && <div>Cart Is Empty!</div>}</div>
       {cartItems.map((item) => (
         <div key={item.product.id} className="row">
           <div className="col-2" style={{fontWeight: 'bold', fontSize: 18}}>{item.product.name}</div>
-          <div className="col-2">
-            <button onClick={() => onAdd(item.product)} className="add">
-              +
-            </button>
-            <button onClick={() => onRemove(item.product)} className="remove">
-              -
-            </button>
-          </div>
+          
           <div className="col-2 text-right">
             {item.qty} X &#8377;{item.product.price.toFixed(2)}
           </div>
@@ -61,9 +54,9 @@ export default function Cart(props) {
             </div>
           </div>
           <hr />
-          <div className="row">
-              <Link align={"center"} style={{fontSize: 20, color: '#000000', fontWeight: 'bold'}} to="/checkout" className="button">Checkout</Link>
-
+          <div className="row">              
+              <Link align={"center"} style={{fontSize: 20, color: '#000000', fontWeight: 'bold'}} className="button" onClick={() => {alert('Your order has been placed succesfully'); 
+              localStorage.removeItem("cartItems"); setCartItems([])}} to="/">Place Order</Link>
           </div>
         </>
       )}

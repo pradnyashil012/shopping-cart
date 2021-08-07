@@ -4,6 +4,7 @@ import Main from "./components/main";
 import data from "./data";
 import { useState } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import Checkout from "./components/checkOut";
 
 function App() {
   const { products } = data;
@@ -75,6 +76,9 @@ function App() {
                 onRemove={onRemove}
                 setCartItems={setCartItems}
               ></Cart>
+            </Route>
+            <Route exact path="/checkout">
+              <Checkout setCartItems={setCartItems}></Checkout>
             </Route>
           </Switch>
         </BrowserRouter>
