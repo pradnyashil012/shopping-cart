@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react";
 import { Link } from "react-router-dom";
 
 export default function Header(props) {
@@ -9,7 +8,7 @@ export default function Header(props) {
         <div className="container">
             <nav className="navbar navbar-expand-lg navbar-light bg-light d-flex justify-content-between">
             <a className="navbar-brand" href="/">
-               <h2>Shopper </h2>
+               <h2 style={{fontSize: 25, fontWeight: 'bold'}}>Shopper </h2>
             </a>
         
             <div className="d-flex  justify-content-end" id="navbarSupportedContent">
